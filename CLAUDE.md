@@ -6,7 +6,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 **Jump Higher** is a motivational audio training landing page that delivers a free MP3 download in exchange for email signup. The methodology is adapted from professional horse training techniques - using the concept of an "inner rider" to encourage and bond with oneself.
 
-**Current Status**: MVP implementation - single landing page with email capture
+**Current Status**: LIVE - Deployed at https://jumphigher.horse with ConvertKit integration
 
 ## Target Use Case
 
@@ -19,9 +19,9 @@ This landing page is designed for:
 
 ### Technology Stack
 - **Frontend**: Pure HTML/CSS/JavaScript (no framework) ✅
-- **Email Service**: Mailchimp or ConvertKit embedded form (to be configured)
-- **Hosting**: Cloudflare Pages or Netlify (planned)
-- **Audio Delivery**: Self-hosted MP3 via thank-you page
+- **Email Service**: ConvertKit (Form UID: 98bfe26c53) ✅
+- **Hosting**: Cloudflare Pages - https://jumphigher.horse ✅
+- **Audio Delivery**: Self-hosted MP3 (jump-higher-training.mp3, 255KB) ✅
 - **Future**: Stripe integration for paid premium content
 
 ### User Flow
@@ -127,15 +127,26 @@ npx serve
 
 ## Deployment
 
-### Cloudflare Pages
+### Current Live Deployment
+- **URL**: https://jumphigher.horse
+- **Platform**: Cloudflare Pages
+- **GitHub Repo**: https://github.com/kmikeym/jump-higher
+- **Email Service**: ConvertKit (Form UID: 98bfe26c53)
+- **Audio File**: jump-higher-training.mp3 (255KB, included in repo)
+- **Auto-Deploy**: Enabled (pushes to `main` branch trigger deployment)
+- **SSL**: Automatic via Cloudflare
+- **DNS**: Managed via Cloudflare nameservers
+
+### Cloudflare Pages Setup
 ```bash
-# Connect GitHub repo to Cloudflare Pages
+# Connected GitHub repo to Cloudflare Pages
 # Build settings:
 Build command: (none - static site)
 Build output directory: /
+# Custom domain: jumphigher.horse (configured)
 ```
 
-### Netlify
+### Alternative: Netlify
 ```bash
 # Drag-and-drop deployment or GitHub integration
 # Build settings:
@@ -147,7 +158,7 @@ Publish directory: /
 
 ### Headline Formula
 - **Primary**: "JUMP HIGHER" (brand name, all caps, bold)
-- **Secondary**: Benefit-driven statement (e.g., "Transform Your Inner Dialogue in 10 Minutes")
+- **Secondary**: Benefit-driven statement (e.g., "Transform Your Inner Dialogue in Just 2 Minutes a Day")
 - **Supporting**: Clarifying subtext (e.g., "The Audio Training Professional Coaches Use on Themselves")
 
 ### CTA Button Text
@@ -178,23 +189,25 @@ Publish directory: /
 4. ✅ Thank-you page with audio player
 5. ✅ Mobile-responsive layout
 6. ✅ Git repository initialized
+7. ✅ ConvertKit email integration (Form UID: 98bfe26c53)
+8. ✅ Audio file uploaded (jump-higher-training.mp3, 255KB)
+9. ✅ Live deployment at https://jumphigher.horse
 
 ### Known Limitations
-- Email service not yet integrated (placeholder form action)
-- No audio file included (user must upload MP3 to assets/audio/)
 - No analytics tracking
 - No A/B testing
 - No email automation sequences
+- No testimonials or social proof implemented yet
 
 ## Next Steps (Priority Order)
 
-### Immediate (Launch MVP)
-1. **Add Audio File**: Place MP3 in `assets/audio/jump-higher-training.mp3`
-2. **Configure Email Service**: Set up Mailchimp or ConvertKit form
-3. **Test Email Flow**: Submit test email, verify redirect works
+### Immediate (Post-Launch)
+1. ~~**Add Audio File**~~: ✅ COMPLETED - jump-higher-training.mp3 (255KB)
+2. ~~**Configure Email Service**~~: ✅ COMPLETED - ConvertKit (Form UID: 98bfe26c53)
+3. **Test Email Flow**: Verify end-to-end signup and delivery
 4. **Add Analytics**: Google Analytics or Plausible tracking code
-5. **Deploy**: Push to Cloudflare Pages or Netlify
-6. **Custom Domain**: Point domain to deployment (if applicable)
+5. ~~**Deploy**~~: ✅ COMPLETED - Live at https://jumphigher.horse
+6. ~~**Custom Domain**~~: ✅ COMPLETED - jumphigher.horse configured
 
 ### Phase 2 (Optimize Conversion)
 1. **A/B Test Headlines**: Try 3 variations, measure signups
@@ -215,7 +228,8 @@ Publish directory: /
 ### Audio File Specifications
 - **Format**: MP3 (maximum compatibility)
 - **Bitrate**: 128kbps or 192kbps (balance quality/size)
-- **Length**: 5-15 minutes recommended (short-burst motivation)
+- **Current File**: jump-higher-training.mp3 (255KB, ~2 minutes)
+- **Length**: 2 minutes for daily practice (5-15 minutes for extended versions)
 - **File Size**: <10MB for fast download
 - **Naming**: `jump-higher-training.mp3`
 
