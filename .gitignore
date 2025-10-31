@@ -22,3 +22,6 @@ npm-debug.log*
 
 # Dependencies (if added later)
 node_modules/
+# Large video source files
+assets/*.MOV
+assets/*.mov
