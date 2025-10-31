@@ -1,5 +1,8 @@
 // Form validation and submission for Jump Higher
 
+// ConvertKit Configuration
+const CONVERTKIT_FORM_ID = '8725385';
+
 // Scroll to top function
 function scrollToTop() {
   window.scrollTo({
@@ -14,8 +17,38 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
+// Submit email to ConvertKit
+async function submitToConvertKit(email) {
+  try {
+    const response = await fetch(`https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        // You can add custom fields here if needed
+        // first_name: firstName,
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.subscription) {
+      // Success! Redirect to thank-you page
+      window.location.href = 'thank-you.html';
+      return true;
+    } else {
+      throw new Error(data.message || 'Subscription failed');
+    }
+  } catch (error) {
+    console.error('ConvertKit submission error:', error);
+    return false;
+  }
+}
+
 // Handle form submission
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault();
 
   const form = event.target;
@@ -38,21 +71,24 @@ function handleFormSubmit(event) {
   // Store email in sessionStorage for thank-you page
   sessionStorage.setItem('userEmail', email);
 
-  // TODO: Submit to email service (Mailchimp, ConvertKit, etc.)
-  // For now, just redirect to thank-you page
-  console.log('Email submitted:', email);
-
   // Show loading state
   const submitButton = form.querySelector('button[type="submit"]');
   const originalButtonText = submitButton.textContent;
   submitButton.textContent = 'Processing...';
   submitButton.disabled = true;
 
-  // Simulate API call (replace with actual email service integration)
-  setTimeout(() => {
-    // Redirect to thank-you page
-    window.location.href = 'thank-you.html';
-  }, 1000);
+  // Submit to ConvertKit
+  const success = await submitToConvertKit(email);
+
+  if (success) {
+    console.log('Email successfully submitted to ConvertKit:', email);
+    // Redirect happens in submitToConvertKit function
+  } else {
+    // Re-enable button on error
+    submitButton.textContent = originalButtonText;
+    submitButton.disabled = false;
+    alert('There was an error subscribing. Please try again or contact support.');
+  }
 
   return false;
 }
@@ -76,59 +112,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
-// Mailchimp integration example (uncomment and configure when ready)
-/*
-function submitToMailchimp(email) {
-  const MAILCHIMP_ACTION_URL = 'YOUR_MAILCHIMP_FORM_ACTION_URL';
-
-  // Create form data
-  const formData = new FormData();
-  formData.append('EMAIL', email);
-
-  // Submit to Mailchimp
-  fetch(MAILCHIMP_ACTION_URL, {
-    method: 'POST',
-    body: formData,
-    mode: 'no-cors'
-  })
-  .then(() => {
-    // Redirect to thank-you page
-    window.location.href = 'thank-you.html';
-  })
-  .catch(error => {
-    console.error('Mailchimp submission error:', error);
-    alert('There was an error. Please try again.');
-  });
-}
-*/
-
-// ConvertKit integration example (uncomment and configure when ready)
-/*
-async function submitToConvertKit(email) {
-  const CONVERTKIT_FORM_ID = 'YOUR_FORM_ID';
-  const CONVERTKIT_API_KEY = 'YOUR_API_KEY';
-
-  try {
-    const response = await fetch(`https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        api_key: CONVERTKIT_API_KEY,
-        email: email
-      })
-    });
-
-    if (response.ok) {
-      window.location.href = 'thank-you.html';
-    } else {
-      throw new Error('Subscription failed');
-    }
-  } catch (error) {
-    console.error('ConvertKit submission error:', error);
-    alert('There was an error. Please try again.');
-  }
-}
-*/
