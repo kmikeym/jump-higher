@@ -1,7 +1,8 @@
 // Form validation and submission for Jump Higher
 
 // ConvertKit Configuration
-const CONVERTKIT_FORM_ID = '8725385';
+const CONVERTKIT_FORM_UID = '98bfe26c53';
+const CONVERTKIT_FORM_URL = `https://tremendous-originator-5677.kit.com/${CONVERTKIT_FORM_UID}/index.js`;
 
 // Scroll to top function
 function scrollToTop() {
@@ -17,28 +18,27 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
-// Submit email to ConvertKit
+// Submit email to ConvertKit using form action
 async function submitToConvertKit(email) {
   try {
-    const response = await fetch(`https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`, {
+    const formData = new FormData();
+    formData.append('email_address', email);
+    formData.append('first_name', ''); // Optional
+
+    const response = await fetch(`https://app.convertkit.com/forms/${CONVERTKIT_FORM_UID}/subscriptions`, {
       method: 'POST',
+      body: formData,
       headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        // You can add custom fields here if needed
-        // first_name: firstName,
-      })
+        'Accept': 'application/json',
+      }
     });
 
-    const data = await response.json();
-
-    if (response.ok && data.subscription) {
+    if (response.ok) {
       // Success! Redirect to thank-you page
       window.location.href = 'thank-you.html';
       return true;
     } else {
+      const data = await response.json();
       throw new Error(data.message || 'Subscription failed');
     }
   } catch (error) {
