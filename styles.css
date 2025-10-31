@@ -1,0 +1,322 @@
+/* Tony Robbins-Inspired Styling for Jump Higher */
+
+:root {
+  --primary-dark: #1a1a2e;
+  --primary-accent: #e6b800;
+  --neutral-light: #f8f9fa;
+  --neutral-white: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #666666;
+  --accent-success: #27ae60;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+  background: var(--primary-dark);
+  color: var(--neutral-white);
+  padding: 120px 20px 100px;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  color: var(--neutral-white);
+}
+
+.hero-description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Email Form */
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.email-input {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--neutral-white);
+  transition: all 0.3s ease;
+}
+
+.email-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cta-button {
+  background: var(--primary-accent);
+  color: var(--primary-dark);
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(230, 184, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+.cta-button:hover {
+  background: #cc9a00;
+  box-shadow: 0 6px 25px rgba(230, 184, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.privacy-note {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+/* Section Styling */
+.section {
+  padding: 100px 20px;
+}
+
+.section-light {
+  background: var(--neutral-light);
+  color: var(--text-primary);
+}
+
+.section-dark {
+  background: var(--primary-dark);
+  color: var(--neutral-white);
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.section-text {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin: 60px 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefit-item {
+  text-align: center;
+  padding: 30px;
+}
+
+.benefit-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.benefit-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--primary-accent);
+}
+
+.benefit-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-center {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Steps Container */
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 50px;
+  max-width: 1000px;
+  margin: 60px auto 0;
+}
+
+.step-item {
+  text-align: center;
+}
+
+.step-number {
+  width: 80px;
+  height: 80px;
+  background: var(--primary-accent);
+  color: var(--primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 auto 25px;
+  box-shadow: 0 4px 15px rgba(230, 184, 0, 0.3);
+}
+
+.step-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.step-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 120px 20px;
+}
+
+/* Footer */
+.footer {
+  background: #0f0f1a;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .hero-subtitle {
+    font-size: 24px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+
+  .section-text {
+    font-size: 18px;
+  }
+
+  .email-form {
+    max-width: 100%;
+  }
+
+  .email-input,
+  .cta-button {
+    font-size: 16px;
+    padding: 16px 20px;
+  }
+
+  .benefits-grid,
+  .steps-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .section {
+    padding: 60px 20px;
+  }
+
+  .hero {
+    padding: 80px 20px 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .benefit-icon {
+    font-size: 48px;
+  }
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}

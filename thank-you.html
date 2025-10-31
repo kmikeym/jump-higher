@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Audio is Ready! - Jump Higher</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .thank-you-hero {
+      background: var(--primary-dark);
+      color: var(--neutral-white);
+      padding: 100px 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .audio-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 40px auto;
+      backdrop-filter: blur(10px);
+    }
+
+    audio {
+      width: 100%;
+      margin: 30px 0;
+      border-radius: 8px;
+    }
+
+    .download-button {
+      display: inline-block;
+      background: var(--primary-accent);
+      color: var(--primary-dark);
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(230, 184, 0, 0.4);
+    }
+
+    .download-button:hover {
+      background: #cc9a00;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(230, 184, 0, 0.6);
+    }
+
+    .instructions {
+      text-align: left;
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--primary-accent);
+      border-radius: 4px;
+    }
+
+    .instructions h3 {
+      color: var(--primary-accent);
+      margin-bottom: 15px;
+    }
+
+    .instructions ul {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+
+    .success-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section class="thank-you-hero">
+    <div class="container">
+      <div class="success-icon">✅</div>
+      <h1 class="hero-title">You're In!</h1>
+      <p class="hero-subtitle">Your Free Audio Training is Ready</p>
+
+      <div class="audio-container">
+        <h2 style="margin-bottom: 20px;">Jump Higher: Inner Rider Training</h2>
+
+        <!-- Audio Player -->
+        <audio id="audioPlayer" controls preload="metadata">
+          <source src="assets/audio/jump-higher-training.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+
+        <a href="assets/audio/jump-higher-training.mp3" download="Jump-Higher-Training.mp3" class="download-button">
+          Download MP3
+        </a>
+
+        <div class="instructions">
+          <h3>How to Use This Training:</h3>
+          <ul>
+            <li><strong>Listen First:</strong> Find a quiet space and listen to the full 10-minute training</li>
+            <li><strong>Practice Daily:</strong> Use it before important moments when you need encouragement</li>
+            <li><strong>Make It Yours:</strong> Adapt the "inner rider" technique to your own voice and style</li>
+            <li><strong>Track Results:</strong> Notice how your self-talk shifts over the next week</li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 16px; opacity: 0.9;">
+          <strong>Keep an eye on your inbox!</strong> We'll send you additional resources and
+          advanced techniques to maximize your inner rider practice.
+        </p>
+      </div>
+
+      <p style="margin-top: 40px; font-size: 18px; opacity: 0.8;">
+        Questions? Email us at: <a href="mailto:support@jumphigher.com" style="color: var(--primary-accent);">support@jumphigher.com</a>
+      </p>
+
+      <p style="margin-top: 20px; font-size: 14px; opacity: 0.6;">
+        <a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: underline;">← Back to home page</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Jump Higher. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Check if user came from form submission
+    const userEmail = sessionStorage.getItem('userEmail');
+    if (!userEmail) {
+      // Redirect to home if accessed directly
+      // Uncomment the line below if you want to enforce this
+      // window.location.href = 'index.html';
+    }
+
+    // Track audio playback for analytics
+    const audioPlayer = document.getElementById('audioPlayer');
+    if (audioPlayer) {
+      let hasStartedPlaying = false;
+      let hasCompleted = false;
+
+      audioPlayer.addEventListener('play', function() {
+        if (!hasStartedPlaying) {
+          hasStartedPlaying = true;
+          console.log('Audio started playing');
+          // TODO: Send to analytics
+        }
+      });
+
+      audioPlayer.addEventListener('ended', function() {
+        if (!hasCompleted) {
+          hasCompleted = true;
+          console.log('Audio completed');
+          // TODO: Send to analytics
+        }
+      });
+
+      // Track progress at 25%, 50%, 75%
+      audioPlayer.addEventListener('timeupdate', function() {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        // TODO: Send milestone events to analytics
+      });
+    }
+
+    // Clear stored email after page load
+    setTimeout(() => {
+      sessionStorage.removeItem('userEmail');
+    }, 1000);
+  </script>
+</body>
+</html>
