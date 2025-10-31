@@ -30,7 +30,8 @@ body {
 
 /* Hero Section */
 .hero {
-  background: var(--primary-dark);
+  background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+              url('assets/images/hero.jpg') center/cover no-repeat;
   color: var(--neutral-white);
   padding: 120px 20px 100px;
   text-align: center;
@@ -38,6 +39,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .hero-title {
