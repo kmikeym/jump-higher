@@ -30,7 +30,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+  background: linear-gradient(rgba(26, 26, 46, 0.4), rgba(26, 26, 46, 0.4)),
               url('assets/images/hero.jpg') center/cover no-repeat;
   color: var(--neutral-white);
   padding: 120px 20px 100px;
@@ -40,6 +40,14 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.hero .container {
+  background: rgba(26, 26, 46, 0.75);
+  padding: 60px 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .hero-title {
@@ -297,6 +305,10 @@ body {
 
   .hero {
     padding: 80px 20px 60px;
+  }
+
+  .hero .container {
+    padding: 40px 20px;
   }
 }
 
